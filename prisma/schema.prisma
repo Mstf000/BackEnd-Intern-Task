@@ -8,38 +8,41 @@ generator client {
 }
 
 model User {
-  userId   Int     @id @default(autoincrement())
+  userId   Int      @id @default(autoincrement())
   name     String
-  email    String  @unique
+  email    String   @unique
   password String
   address  String?
   orders   Order[]
-  carts    Cart[] // Added relation field for Cart
+  carts    Cart[]
 }
 
 model Product {
-  productId   Int     @id @default(autoincrement())
+  productId   Int      @id @default(autoincrement())
   name        String
   description String?
   price       Float
   stock       Int
   orders      Order[]
-  carts       Cart[] // Added relation field for Cart
+  carts       Cart[]
 }
 
 model Order {
-  orderId   Int       @id @default(autoincrement())
-  orderDate DateTime  @default(now())
+  orderId   Int      @id @default(autoincrement())
+  orderDate DateTime @default(now())
   status    String
   userId    Int
-  user      User      @relation(fields: [userId], references: [userId])
+  user      User     @relation(fields: [userId], references: [userId])
   products  Product[]
 }
 
 model Cart {
-  cartId    Int     @id @default(autoincrement())
+  cartId    Int      @id @default(autoincrement())
   userId    Int
-  user      User    @relation(fields: [userId], references: [userId])
+  user      User     @relation(fields: [userId], references: [userId])
   productId Int
-  product   Product @relation(fields: [productId], references: [productId])
+  product   Product  @relation(fields: [productId], references: [productId])
+  quantity  Int
+
+  @@unique([userId, productId])
 }
