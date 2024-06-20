@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "name": "Backend-Intern-Task",
   "version": "0.0.1",
   "description": "",
@@ -69,16 +68,4 @@
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
   }
-=======
-  "name": "backend-intern-task",
-  "version": "1.0.0",
-  "description": "\"# BackEnd-Intern-Task\"",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
->>>>>>> 1976e9a9b1770bc35969caeb7b09da88609e71da
 }
