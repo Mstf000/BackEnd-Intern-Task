@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
-import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class CartService {
@@ -13,7 +12,7 @@ export class CartService {
                     userId: data.userId,
                     productId: data.productId,
                 },
-            } as Prisma.CartWhereUniqueInput,
+            },
             update: {
                 quantity: {
                     increment: data.quantity,
@@ -35,25 +34,23 @@ export class CartService {
     }
 
     async updateCart(data: { userId: number; productId: number; quantity: number }) {
-        return this.prisma.cart.update({
+        return this.prisma.cart.updateMany({
             where: {
-                userId_productId: {
-                    userId: data.userId,
-                    productId: data.productId,
-                },
-            } as Prisma.CartWhereUniqueInput,
-            data: { quantity: data.quantity },
+                userId: data.userId,
+                productId: data.productId,
+            },
+            data: {
+                quantity: data.quantity,
+            },
         });
     }
 
     async removeFromCart(data: { userId: number; productId: number }) {
-        return this.prisma.cart.delete({
+        return this.prisma.cart.deleteMany({
             where: {
-                userId_productId: {
-                    userId: data.userId,
-                    productId: data.productId,
-                },
-            } as Prisma.CartWhereUniqueInput,
+                userId: data.userId,
+                productId: data.productId,
+            },
         });
     }
 }
