@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
 
 @Injectable()
@@ -6,6 +6,15 @@ export class CartService {
     constructor(private prisma: PrismaService) { }
 
     async addToCart(data: { userId: number; productId: number; quantity: number }) {
+        // Check if product exists
+        const productExists = await this.prisma.product.findUnique({
+            where: { productId: data.productId },
+        });
+
+        if (!productExists) {
+            throw new NotFoundException(`Product with ID ${data.productId} does not exist.`);
+        }
+
         return this.prisma.cart.upsert({
             where: {
                 userId_productId: {
