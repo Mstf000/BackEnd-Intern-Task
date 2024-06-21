@@ -11,7 +11,7 @@
 1. Clone the repository:
 
   ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/Mstf000/BackEnd-Intern-Task.git
    cd backend-intern-task
   ```
 2. Install dependencies:
