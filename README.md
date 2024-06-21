@@ -1,4 +1,5 @@
-<<<<<<< HEAD
+# Backend Intern Task
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
@@ -6,8 +7,8 @@
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
+<p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+<p align="center">
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
@@ -16,12 +17,10 @@
 <a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
 <a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
 <a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
+<a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
+<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
+<a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
 ## Description
 
@@ -29,35 +28,120 @@
 
 ## Installation
 
-```bash
-$ npm install
-```
+1. Clone the repository:
+
+   git clone <your-repo-url>
+   cd backend-intern-task
+
+2. Install dependencies:
+
+   npm install
+
+3. Set up the PostgreSQL database and update the `.env` file with your database credentials:
+
+   DATABASE_URL="postgresql://user:password@localhost:5432/backend_intern_task"
+
+4. Run database migrations:
+
+   npx prisma migrate dev --name init
+   npx prisma generate
 
 ## Running the app
 
-```bash
+Start the NestJS application:
+
 # development
-$ npm run start
+npm run start
 
 # watch mode
-$ npm run start:dev
+npm run start:dev
 
 # production mode
-$ npm run start:prod
-```
+npm run start:prod
+
+The application will be running at `http://localhost:3000`.
+
+## API Documentation
+
+The API documentation is available at `http://localhost:3000/api`.
+
+### API Endpoints
+
+#### Cart
+
+- **Add to Cart (POST /api/cart/add)**:
+  {
+    "userId": 1,
+    "productId": 1,
+    "quantity": 2
+  }
+
+- **View Cart (GET /api/cart/:userId)**
+
+- **Update Cart (PUT /api/cart/update)**:
+  {
+    "userId": 1,
+    "productId": 1,
+    "quantity": 5
+  }
+
+- **Remove from Cart (DELETE /api/cart/remove)**:
+  {
+    "userId": 1,
+    "productId": 1
+  }
+
+#### Orders
+
+- **Create Order (POST /api/orders)**:
+  {
+    "userId": 1,
+    "products": [
+      { "productId": 1, "quantity": 2 }
+    ]
+  }
+
+- **Get Order by ID (GET /api/orders/:orderId)**
+
+- **Update Order Status (PUT /api/orders/:orderId/status)**:
+  {
+    "status": "Shipped"
+  }
+
+#### Products
+
+- **Create Product (POST /api/products)**:
+  {
+    "name": "Sample Product",
+    "description": "This is a sample product.",
+    "price": 100.0,
+    "stock": 10
+  }
+
+- **Get Product by ID (GET /api/products/:id)**
+
+#### Users
+
+- **Create User (POST /api/users)**:
+  {
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "password": "securepassword",
+    "address": "123 Main St"
+  }
+
+- **Get User by ID (GET /api/users/:id)**
 
 ## Test
 
-```bash
 # unit tests
-$ npm run test
+npm run test
 
 # e2e tests
-$ npm run test:e2e
+npm run test:e2e
 
 # test coverage
-$ npm run test:cov
-```
+npm run test:cov
 
 ## Support
 
@@ -72,6 +156,3 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
-=======
-"# BackEnd-Intern-Task" 
->>>>>>> 1976e9a9b1770bc35969caeb7b09da88609e71da
